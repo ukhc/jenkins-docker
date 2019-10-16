@@ -8,7 +8,7 @@
 ## Build the image
 ~~~
 VERSION=$(cat version)
-docker build -t 127.0.0.1:30500/internal/jenkins:$VERSION . --no-cache
+docker build -t internal/jenkins:$VERSION . --no-cache
 ~~~
 
 ## Docker deployment to the local workstation
@@ -16,7 +16,7 @@ docker build -t 127.0.0.1:30500/internal/jenkins:$VERSION . --no-cache
 ~~~
 # start the container
 VERSION=$(cat version)
-docker run --name jenkins -p 8080:8080 -p 50000:50000 -d 127.0.0.1:30500/internal/jenkins:$VERSION
+docker run --name jenkins -p 8080:8080 -p 50000:50000 -d internal/jenkins:$VERSION
 
 # see the status
 docker container ls
@@ -29,7 +29,7 @@ docker container stop jenkins
 docker container rm jenkins
 
 # save a copy of the image
-docker save 127.0.0.1:30500/internal/jenkins:$VERSION > internal.jenkins-$VERSION.tar
+docker save internal/jenkins:$VERSION > internal.jenkins-$VERSION.tar
 ~~~
 
 
